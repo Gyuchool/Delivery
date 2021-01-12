@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import com.fasterxml.jackson.databind.deser.std.StdKeyDeserializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
