@@ -45,7 +45,6 @@ public class MemberApiController {
     static class MemberDto{
         private Long id;
         private String name;
-
     }
 
     @PostMapping("/api/v1/members")
