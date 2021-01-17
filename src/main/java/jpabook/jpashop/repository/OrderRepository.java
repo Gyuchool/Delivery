@@ -98,4 +98,12 @@ public class OrderRepository {
         ).getResultList();
     }
 
+    public List<Order> findAllWithItem() {  //페이징 불가능
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.orderItems oi" + //일대 다 여서 발생한 문제
+                        " join fetch oi.item i", Order.class)
+                .getResultList();
+    }
 }
