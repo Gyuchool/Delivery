@@ -94,9 +94,10 @@ public class OrderRepository {
         return em.createQuery(
                 "select o from Order o" +
                         " join fetch o.member m" +
-                        " join fetch o.delivery d", Order.class
-        ).getResultList();
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
     }
+
 
     public List<Order> findAllWithItem() {  //페이징 불가능
         return em.createQuery(
@@ -104,6 +105,16 @@ public class OrderRepository {
                         " join fetch o.member m" +
                         " join fetch o.orderItems oi" + //일대 다 여서 발생한 문제
                         " join fetch oi.item i", Order.class)
+                .getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
                 .getResultList();
     }
 }
