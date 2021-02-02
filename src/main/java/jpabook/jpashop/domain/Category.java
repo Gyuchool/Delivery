@@ -19,7 +19,7 @@ public class Category {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany                         //실무에서는 변경이 불가능해서 잘 안쓰임
     @JoinTable(name = "category_item",
         joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id")
